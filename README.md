@@ -29,14 +29,7 @@ Instructions of how to use:
 
 ## License
 
-This project is copyrighted under Attribution Non-Commercial Share Alike;
-(BY-NC-SA). This license lets others remix, tweak, and build upon this work
-non-commercially, as long as they credit you and license their new creations
-under the identical terms. Others can download and redistribute your work,
-and they can also translate, make remixes, and produce new stories based
-on your work. All new work based on this will carry the same license,
-so any derivatives will also be non-commercial in nature. Should you
-require this bot for a commercial reason, please contact me.
+GPL v2.
 
 ## Original code
 

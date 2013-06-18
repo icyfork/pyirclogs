@@ -8,7 +8,7 @@ including joins, parts, mode, and topic changes.
 Requires Python `IRCLib`, `sudo apt-get install python-irclib` on Ubuntu,
 and should be similar on most other distributions of GNU/Linux.
 
-For Windows, `"`easy_install irclib`
+For Windows, `easy_install irclib`
 (or simply grab IRClib from the downloads section)
 
 ## Usage
@@ -38,6 +38,10 @@ on your work. All new work based on this will carry the same license,
 so any derivatives will also be non-commercial in nature. Should you
 require this bot for a commercial reason, please contact me.
 
+## Original code
+
+See <http://code.google.com/p/pyirclogs/>.
+
 ## About this mirror on Github
 
 My name is *Ky-Anh Huynh*. On Github I am @icy.
@@ -51,5 +55,5 @@ Because I need to edit the script to make it to work with my configuration,
 and the project doesn't release source code in any repository (FIXME),
 I create this mirror on `Github` that may help me and the community.
 
-While preparing this repository I know that @excid3 also has its own `bot`.
+While preparing this repository I know *Chris Oliver* also has its own `bot`.
 I will take a look if it works on my servers. His work seems to be great.

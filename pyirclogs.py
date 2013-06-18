@@ -3,17 +3,21 @@
 import os
 
 network = 'irc.freenode.net'
-port = 8001
-nick = 'pyIRCBot' ## Change this, of course.
-channels = ['#botters','#testing-room'] # LOWERCASE ONLY
-name = 'IRC Log Bot - http://code.google.com/p/pyirclogs/'
-password = 'nickserv-password'
+port = 6697
+
+nick = os.uname()[1]
+if nick == 'shell':
+    nick = 'berlios'
+nick += "-logger"
+
+channels = ['#archlinuxvn', '#theslinux']
+name = 'Logger by https://github.com/icyfork/pyirclogs/'
+password = ''
 
 if os.name == 'nt':
     LOG_PATH = 'C:/logs/'
 else:
-    LOG_PATH = '/path/to/logs/'
-
+    LOG_PATH = os.path.expanduser('~') + '/logs/'
 
 __author__ = "Base code designed by Chris Oliver <excid3@gmail.com>, heavily modified by Harry Strongburg <lolwutaf2@gmail.com>"
 __version__ = "1.1 Stable"
@@ -53,7 +57,7 @@ class LogFile(object):
         if self.keep_open:
             self.file.close()
         self.keep_open = True
-        self.file = None        
+        self.file = None
 
     def write(self,message,prefix=True):
         if self.file == None:
@@ -75,7 +79,7 @@ class LogFile(object):
             self.path = self.path + time.strftime("%Y/%m/")
             if not os.path.exists(self.path):
                 os.makedirs(self.path)
-            
+
         # Create our shit
         if self.mode == 1:
             self.name = str(time.time())
@@ -86,12 +90,12 @@ class LogFile(object):
             ##self.name = time.strftime("%H")
 
         self._total_name = self.path+self.name+self.extention
-        
+
         if os.path.isfile(self._total_name):
             self.file = open(self._total_name,'a+')
         else:
             self.file = open(self._total_name,'w')
-            
+
         self.write('[IRC logfile - Started %s]'%time.ctime(),False)
 
 class LogFileManager(object):
@@ -112,7 +116,7 @@ class LogFileManager(object):
     def write_all(self,text):
         for log in self.logs:
             self.logs[log].write(text)
-    
+
     def close(self,name):
         self.logs[name.lower()].close()
 
@@ -120,7 +124,7 @@ class LogFileManager(object):
         for log in self.logs:
             self.logs[log].close()
 
-        
+
 # Connection information
 
 def _real_handler(message,name=None):
@@ -172,7 +176,7 @@ def handleMode ( connection, event ):
 
 def handleNick(connection,event):
     _real_handler(event.source().split('!')[0] +' changed nick to ' + event.target())
-    
+
 
 #(self,path,extention='.log',constant_write=False,mode=2)
 manager = LogFileManager(channels)
@@ -194,7 +198,7 @@ irc.add_global_handler('mode', handleMode)  ## hence if you log multiple rooms, 
 
 # Create a server object, connect and join the channel
 server = irc.server()
-server.connect(network, port, nick, ircname=name,ssl=False)
+server.connect(network, port, nick, ircname=name,ssl=True)
 if password: server.privmsg("nickserv","identify %s"%password)
 time.sleep(10) ## Waiting on the IRCd to accept your password before joining rooms
 for channel in channels:

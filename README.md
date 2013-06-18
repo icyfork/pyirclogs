@@ -24,7 +24,7 @@ Instructions of how to use:
 
 ## Author
 
-* Harry <http://harry.lu/contact.html>
+* Harry Strongburg <http://harry.lu/contact.html>
 * Chris Oliver <https://github.com/excid3/>
 
 ## License
